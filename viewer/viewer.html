@@ -1,0 +1,37 @@
+<!doctype html>
+<!-- Example web client -->
+<html>
+<head>
+<title>Viewer</title>
+<meta charset="utf-8" />
+<script src="jsxcompressor.min.js"></script>
+<script src="http://code.jquery.com/jquery.min.js"></script>
+<script>
+$(document).ready(function () {
+    startWebsocket();
+});
+
+function startWebsocket() {
+    var host = "localhost",
+        port = "1414",
+        uri = "/viewer/YOUR_CHANNEL",
+        ws = new WebSocket("ws://" + host + ":" + port + uri);
+
+    ws.onopen = function(evt) {
+        $(".log").prepend("<p>Connection opened</p>");
+    };
+    ws.onmessage = function(evt) {
+        $(".log").prepend("<p>" + JXG.decompress(evt.data) + "</p>")
+    };
+    ws.onclose = function(evt) {
+        $(".log").empty();
+        $(".log").prepend("<p>Connection close</p>");
+        setTimeout(function(){startWebsocket()}, 5000);
+    };
+}
+</script>
+</head>
+<body>
+<div class="log"></div>
+</body>
+</html>
