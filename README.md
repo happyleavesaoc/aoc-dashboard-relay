@@ -20,3 +20,15 @@ Streamers initiate the relay by a GET request to /streamers/\<channel\>. Upon re
 Viewers connect to the websocket at /viewers/\<channel\> to receive a message stream. The connection is generally established by client-side Javascript, but any sort of client could connect. This decouples the relay server from the display UI.
 
 For each channel being relayed, the server will store a message buffer. All inbound messages are added to the buffer. New viewer connections will receive the contents of the channel's buffer, plus the remainder of the inbound messages in real-time.
+
+## Bandwidth
+
+Samples from Spectator Dashboard 2.3. Sizes in kb.
+
+Game ID | Game Length | Players | MGZ Size | Stream Size | Message Count | Factor
+--------|-------------|---------|----------|-------------|---------------|-------
+1 | 00:49:16 | 8 | 2274 | 5772 | 22462 | 2.53
+2 | 00:58:08 | 8 | 2841 | 6798 | 25752 | 2.39
+3 | 00:44:44 | 2 | 1655 | 2250 | 10776 | 1.36
+4 | 01:22:09 | 8 | 3650 | 7986 | 29407 | 2.18
+5 | 00:55:25 | 8 | 2685 | 6551 | 25080 | 2.44
