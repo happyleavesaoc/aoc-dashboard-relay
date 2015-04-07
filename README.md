@@ -23,7 +23,7 @@ For each channel being relayed, the server will store a message buffer. All inbo
 
 ## Bandwidth
 
-Samples from Spectator Dashboard 2.3. Sizes in kb.
+Samples from Spectator Dashboard 2.4. Sizes in kb.
 
 Game ID | Game Length | Players | MGZ Size | Stream Size | Message Count | Factor
 --------|-------------|---------|----------|-------------|---------------|-------
@@ -32,3 +32,9 @@ Game ID | Game Length | Players | MGZ Size | Stream Size | Message Count | Facto
 3 | 00:44:44 | 2 | 1655 | 2250 | 10776 | 1.36
 4 | 01:22:09 | 8 | 3650 | 7986 | 29407 | 2.18
 5 | 00:55:25 | 8 | 2685 | 6551 | 25080 | 2.44
+
+## Dependencies
+
+### Dependencies
+ - [tornado 4.1](https://github.com/tornadoweb/tornado)
+ - [jsxcompressor](https://github.com/jsxgraph/jsxgraph/tree/master/JSXCompressor)
