@@ -12,7 +12,7 @@ Viewer workflow:
 - Viewer requests relay
 - Server sends data
 
-## Architecture
+### Architecture
 The relay server is run on [tornado](https://github.com/tornadoweb/tornado), an asynchronous networking library and web framework. It allows reliable scaling to thousands of long-lived client connections. It also offers load balancing solutions if necessary. Using a relay server offloads the bandwidth requirements of multiple viewer connections to a server, rather than requiring the streamer to handle the connections.
 
 Streamers initiate the relay by a GET request to /streamers/\<channel\>. Upon receipt, the relay server will attempt to connect to the local dashboard instance on the streamer's computer. If the streamer is behind a NAT, port 8889 must be forwarded. The dashboard's websocket server (also tornado-based) will stream messages to the relay (just as to any other client, like the local web page).
@@ -21,7 +21,7 @@ Viewers connect to the websocket at /viewers/\<channel\> to receive a message st
 
 For each channel being relayed, the server will store a message buffer. All inbound messages are added to the buffer. New viewer connections will receive the contents of the channel's buffer, plus the remainder of the inbound messages in real-time.
 
-## Bandwidth
+### Bandwidth
 
 Samples from Spectator Dashboard 2.4. Sizes in kb.
 
@@ -32,8 +32,6 @@ Game ID | Game Length | Players | MGZ Size | Stream Size | Message Count | Facto
 3 | 00:44:44 | 2 | 1655 | 2250 | 10776 | 1.36
 4 | 01:22:09 | 8 | 3650 | 7986 | 29407 | 2.18
 5 | 00:55:25 | 8 | 2685 | 6551 | 25080 | 2.44
-
-## Dependencies
 
 ### Dependencies
  - [tornado 4.1](https://github.com/tornadoweb/tornado)
